@@ -6,3 +6,5 @@ How to run:
 - Download the project (or copypaste the code), 
 - Press "Run". 
 Afterwards you will get into the menu, where you have 3 options, play blackjack, view my statistics and leave. Good luck.
+Known issues:
+- When you have 11 and more points and you get an A, the value of an A is still 11.
