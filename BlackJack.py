@@ -53,21 +53,22 @@ cards = {"2 of Hearts" : 2,
          "A of Clubs": 11}
 victory = 0
 loses = 0
-
+fairs = 0
 
 
 
 def stat():
     print()
-    print(f"Your wins: {victory}")
-    print(f"Your losses: {loses}")
+    print(f"Your wins: {victory}❇️")
+    print(f"Your losses: {loses}⛔")
+    print(f"Your fairs: {fairs}🟰")
     print()
     startgame()
 
 def game():
     confirm = input('Press "Enter" to begin: ')
     if confirm == "":
-        print("The game has begun")
+        print("The game has begun💎")
         print()
         dealer_key = random.choice(list(cards.keys()))
         dealer_key2 = random.choice(list(cards.keys()))
@@ -76,7 +77,7 @@ def game():
         dealer_sum = dealer_card + dealer_card2
         if dealer_sum == 22:
             dealer_sum -= 10
-        print(f"Dealer's first card is {dealer_key} (value: {dealer_card}),")
+        print(f"Dealer's first card is {dealer_key} (value: {dealer_card})✔️")
         print("Dealer picked another card")
         print()
         player_key = random.choice(list(cards.keys()))
@@ -86,46 +87,47 @@ def game():
         player_sum = player_card + player_card2
         if player_sum == 22:
             player_sum -= 10
-        print(f"You got: {player_key} and {player_key2}, total: {player_sum} points")
+        print(f"You got: {player_key} and {player_key2}, total: {player_sum} points🔅")
         print()
-        print("1. Pick a card")
-        print("2. Stop")
+        print("1. Pick a card💎")
+        print("2. Stop⛔")
         player_choice = input("Your choice: ")
         if player_choice == "1":
             player_key3 = random.choice(list(cards.keys()))
             player_card3 = cards[player_key3]
             player_sum += player_card3
             if player_sum > 21:
-                print(f"You got {player_key3}, total: {player_sum} points. Bust :(")
+                print(f"You got {player_key3}, total: {player_sum} points. Bust 😭")
                 pass
             else:
-                print(f"You got {player_key3}, total: {player_sum} points")
+                print(f"You got {player_key3}, total: {player_sum} points🔅")
                 print()
-                print("1. To pick a card")
-                print("2. To stop")
+                print("1. To pick a card💎")
+                print("2. To stop⛔")
                 player_choice2 = input("Your choice: ")
                 if player_choice2 == "1":
                     player_key4 = random.choice(list(cards.keys()))
                     player_card4 = cards[player_key4]
                     player_sum += player_card4
                     if player_sum > 21:
-                        print(f"You got {player_key4}, total: {player_sum} points. Bust :(")
+                        print(f"You got {player_key4}, total: {player_sum} points. Bust 😭")
                         pass
                     else:
-                        print(f"You got {player_key4}, total: {player_sum} points")
+                        print(f"You got {player_key4}, total: {player_sum} points🔅")
                         print()
-                        print("1. To pick a card")
-                        print("2. To stop")
+                        print("1. To pick a card💎")
+                        print("2. To stop⛔")
                         player_choice3 = input("Your choice: ")
                         if player_choice3 == "1":
                             player_key5 = random.choice(list(cards.keys()))
                             player_card5 = cards[player_key5]
                             player_sum += player_card5
                             if player_sum > 21:
-                                print(f"You got {player_key5}, total: {player_sum} points. Bust :(")
+                                print(f"You got {player_key5}, total: {player_sum} points. Bust 😭")
                                 pass
                             else:
-                                print(f"You got {player_key5}, total: {player_sum} points")
+                                print(f"You got {player_key5}, total: {player_sum} points🔅")
+                                print()
                                 print("You cannot pick more cards.")
 
                         elif player_choice3 == "2":
@@ -141,12 +143,12 @@ def game():
         else:
             print("Invalid answer")
         print()
-        print(f"Dealer's second card is: {dealer_key2}, total: {dealer_sum} points")
+        print(f"Dealer's second card is: {dealer_key2}, total: {dealer_sum} points🔅")
         if dealer_sum <= 15:
             dealer_key3 = random.choice(list(cards.keys()))
             dealer_card3 = cards[dealer_key3]
             dealer_sum += dealer_card3
-            print(f"Dealer picks a card. It's {dealer_key3}, total: {dealer_sum} points")
+            print(f"Dealer picks a card. It's {dealer_key3}, total: {dealer_sum} points🔅")
             if dealer_sum > 21:
                 print(f"Dealer's card is: {dealer_key3}, total: {dealer_sum} points. Bust.")
                 pass
@@ -154,15 +156,15 @@ def game():
                 dealer_key4 = random.choice(list(cards.keys()))
                 dealer_card4 = cards[dealer_key4]
                 dealer_sum += dealer_card4
-                print(f"Dealer picks a card. It's {dealer_key4}, total: {dealer_sum} points")
+                print(f"Dealer picks a card. It's {dealer_key4}, total: {dealer_sum} points🔅")
                 if dealer_sum > 21:
-                    print(f"Dealer's card is: {dealer_key4}, total: {dealer_sum} points")
+                    print(f"Dealer's card is: {dealer_key4}, total: {dealer_sum} points🔅")
                     pass
                 elif dealer_sum <= 15:
                     dealer_key5 = random.choice(list(cards.keys()))
                     dealer_card5 = cards[dealer_key5]
                     dealer_sum += dealer_card5
-                    print(f"Dealer picks a card. It's {dealer_key5}, total: {dealer_sum} points")
+                    print(f"Dealer picks a card. It's {dealer_key5}, total: {dealer_sum} points🔅")
                     if dealer_sum > 21:
                         print("Bust.")
                         pass
@@ -176,23 +178,25 @@ def game():
             pass
 
         def check_result():
-            global loses, victory
+            global loses, victory, fairs
             if player_sum < dealer_sum <= 21:
-                print("You lost")
+                print("You lost😭")
                 loses += 1
             elif dealer_sum < player_sum <= 21:
-                print("You won!")
+                print("You won!😀")
                 victory += 1
-            elif dealer_sum > 21 > player_sum:
-                print("You won!")
+            elif dealer_sum > 21 >= player_sum:
+                print("You won!😀")
                 victory += 1
             elif player_sum > 21 > dealer_sum:
-                print("You lost")
+                print("You lost😭")
                 loses += 1
             elif dealer_sum > 21 and player_sum > 21:
-                print("Fair")
+                print("Fair✔️")
+                fairs += 1
             elif dealer_sum == player_sum:
-                print("Fair")
+                print("Fair✔️")
+                fairs += 1
             else:
                 print("Unknow error")
                 pass
@@ -216,11 +220,11 @@ def game():
 
 
 def menu():
-    print("Welcome to the game!")
-    print("Navigation")
-    print("1. To launch blackjack")
-    print("2. To see your statistics")
-    print("0. To leave")
+    print("Welcome to the game!💎")
+    print()
+    print("1. To launch blackjack🔅")
+    print("2. To see your statistics📈")
+    print("0. To leave⛔")
     choice = input("Pick a number: ")
     if choice == "1":
         game()
